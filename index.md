@@ -1,3 +1,7 @@
+[Home](index.html) | [Projects](projects.html) | [About Me](aboutme.html)
+
+---
+
 ---
 layout: default
 title: Home
