@@ -1,26 +1,30 @@
-[Home](index.html) | [Projects](projects.html) | [About Me](aboutme.html)
-
----
-
 ---
 layout: default
 title: Home
 ---
 
-# Hello, I'm [Your Name] 👋
-### Cybersecurity Engineering Graduate | Detection & Insider Threat Specialist
+# 👋 Hello, I'm Phillip
+### Cybersecurity Engineer | Specialize in Detection, IR, and Automation
 
-I specialize in building resilient defense systems through automation, high-fidelity detection engineering, and proactive threat hunting. 
+Welcome to my portfolio. I build and defend systems with a focus on high-fidelity detection and proactive threat hunting.
 
 ---
 
-## 💼 Internship Experience
-* **Detection Engineering** - Developed SIEM rules to identify lateral movement.
-* **Security Operations (SOC)** - Triaged high-priority alerts and improved IR workflows.
-* **Insider Threat** - Analyzed behavioral telemetry to mitigate data exfiltration.
+## 🛠️ Tech Stack & Skills
+- **Languages:** Python, SQL, Bash, PowerShell
+- **Security:** SIEM (Splunk/ELK), EDR, Wireshark, Metasploit
+- **Infrastructure:** AWS, Linux/Windows Administration, Docker
 
-## 🛠 Featured Projects
-* [Project 1 Name](link) - Brief description of a security tool you built.
-* [Project 2 Name](link) - Brief description of a lab or analysis.
+## 🚀 Featured Projects
+> **Project Name 1**
+> *Description of the project. What problem did you solve?*
+> [View Code](https://github.com/nguyenp70)
 
-[Download My Resume] | [LinkedIn] | [GitHub]
+> **Project Name 2**
+> *Description of the project. What was the impact?*
+> [View Code](https://github.com/nguyenp70)
+
+---
+
+## 📬 Connect with Me
+[LinkedIn](https://linkedin.com) | [GitHub](https://github.com/nguyenp70) | [Resume](./resume.pdf)
