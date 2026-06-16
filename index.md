@@ -1,30 +1,138 @@
 ---
-layout: default
-title: Home
+layout: null
+title: Phillip Nguyen | Security Engineer
 ---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corporate Cyber | Phillip Nguyen</title>
+    <style>
+        :root {
+            --bg-dark: #0a192f;
+            --bg-light: #112240;
+            --accent: #64ffda;
+            --text-main: #e6f1ff;
+            --text-dim: #8892b0;
+            --border: #233554;
+        }
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 4rem;
+            border-bottom: 1px solid var(--border);
+            background: rgba(10, 25, 47, 0.85);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo { color: var(--accent); font-weight: bold; font-size: 1.2rem; }
+        .nav-links a { color: var(--text-main); text-decoration: none; margin-left: 2rem; font-size: 0.9rem; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--accent); }
 
-# 👋 Hello, I'm Phillip
-### Cybersecurity Engineer | Specialize in Detection, IR, and Automation
+        main { max-width: 1000px; margin: 4rem auto; padding: 0 2rem; }
+        
+        .hero { margin-bottom: 6rem; }
+        .hero h3 { color: var(--accent); font-size: 1rem; margin-bottom: 1rem; }
+        .hero h1 { font-size: 4rem; margin: 0; color: #ccd6f6; }
+        .hero h2 { font-size: 3.5rem; margin: 0; color: var(--text-dim); line-height: 1.1; }
+        .hero p { max-width: 540px; color: var(--text-dim); margin-top: 2rem; font-size: 1.1rem; line-height: 1.6; }
 
-Welcome to my portfolio. I build and defend systems with a focus on high-fidelity detection and proactive threat hunting.
+        .section-header { display: flex; align-items: center; margin-bottom: 3rem; }
+        .section-header h2 { font-size: 1.5rem; margin-right: 1rem; color: #ccd6f6; }
+        .section-header .line { height: 1px; flex-grow: 1; background: var(--border); }
 
----
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+        .card { 
+            background: var(--bg-light); 
+            border: 1px solid var(--border); 
+            padding: 2rem; 
+            border-radius: 4px; 
+            transition: transform 0.2s, border-color 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+        .card:hover { transform: translateY(-5px); border-color: var(--accent); }
+        .card h4 { color: var(--accent); margin: 0 0 1rem; font-size: 0.8rem; text-transform: uppercase; }
+        .card h3 { color: #ccd6f6; margin: 0 0 1rem; }
+        .card p { color: var(--text-dim); font-size: 0.9rem; margin: 0; line-height: 1.5; }
 
-## 🛠️ Tech Stack & Skills
-- **Languages:** Python, SQL, Bash, PowerShell
-- **Security:** SIEM (Splunk/ELK), EDR, Wireshark, Metasploit
-- **Infrastructure:** AWS, Linux/Windows Administration, Docker
+        .tag-list { display: flex; flex-wrap: wrap; margin-top: 1.5rem; }
+        .tag { color: var(--accent); font-size: 0.75rem; margin-right: 1rem; }
 
-## 🚀 Featured Projects
-> **Project Name 1**
-> *Description of the project. What problem did you solve?*
-> [View Code](https://github.com/nguyenp70)
+        footer { text-align: center; padding: 4rem; color: var(--text-dim); font-size: 0.8rem; border-top: 1px solid var(--border); }
+        
+        @media (max-width: 768px) {
+            nav { padding: 1.5rem 2rem; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero h2 { font-size: 2rem; }
+            .grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">PHILLIP.SYS</div>
+        <div class="nav-links">
+            <a href="#about">01.About</a>
+            <a href="#experience">02.Experience</a>
+            <a href="#work">03.Work</a>
+            <a href="#contact">04.Contact</a>
+        </div>
+    </nav>
 
-> **Project Name 2**
-> *Description of the project. What was the impact?*
-> [View Code](https://github.com/nguyenp70)
+    <main>
+        <section class="hero" id="about">
+            <h3>Hi, my name is</h3>
+            <h1>Phillip Nguyen.</h1>
+            <h2>I secure the digital perimeter.</h2>
+            <p>I’m a cybersecurity engineer specializing in detection engineering, threat hunting, and high-fidelity automation for enterprise defense.</p>
+        </section>
 
----
+        <section id="work">
+            <div class="section-header">
+                <h2>Featured Deployments</h2>
+                <div class="line"></div>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h4>Internal Project</h4>
+                    <h3>Detection Engine v4.2</h3>
+                    <p>Automated SIEM rule validation pipeline integrated with CI/CD for zero-day mitigation.</p>
+                    <div class="tag-list">
+                        <span class="tag">Python</span>
+                        <span class="tag">Splunk</span>
+                        <span class="tag">Docker</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h4>Security Research</h4>
+                    <h3>Lateral Movement Monitor</h3>
+                    <p>Behavioral analysis framework for identifying persistent threats within hybrid-cloud topologies.</p>
+                    <div class="tag-list">
+                        <span class="tag">SQL</span>
+                        <span class="tag">AWS Security</span>
+                        <span class="tag">ELK</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
-## 📬 Connect with Me
-[LinkedIn](https://linkedin.com) | [GitHub](https://github.com/nguyenp70) | [Resume](./resume.pdf)
+    <footer id="contact">
+        Built & Secured by Phillip Nguyen &copy; 2026
+    </footer>
+</body>
+</html>
