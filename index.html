@@ -43,9 +43,23 @@
         main { max-width: 1000px; margin: 4rem auto; padding: 0 2rem; }
         
         section { margin-bottom: 6rem; }
+        .hero { display: flex; align-items: center; gap: 3rem; margin-bottom: 6rem; flex-wrap: wrap; }
+        .profile-img-container { flex-shrink: 0; }
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent);
+            box-shadow: 0 0 15px rgba(100, 255, 218, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .profile-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(100, 255, 218, 0.3);
+        }
         .hero h1 { font-size: 4rem; margin: 0; color: var(--accent); }
         .hero h2 { font-size: 3.5rem; margin: 0; color: var(--text-dim); line-height: 1.1; }
-        .hero p { max-width: 540px; color: var(--text-dim); margin-top: 2rem; font-size: 1.1rem; line-height: 1.6; }
 
         .section-header { display: flex; align-items: center; margin-bottom: 3rem; }
         .section-header h2 { font-size: 1.5rem; margin-right: 1rem; color: #ccd6f6; }
@@ -87,6 +101,7 @@
         
         @media (max-width: 768px) {
             nav { padding: 1.5rem 2rem; }
+            .hero { flex-direction: column; text-align: center; gap: 2rem; }
             .hero h1 { font-size: 2.5rem; }
             .hero h2 { font-size: 2rem; }
             .grid { grid-template-columns: 1fr; }
@@ -105,9 +120,13 @@
 
     <main>
         <section class="hero" id="me">
-            <h1>Phillip Nguyen</h1>
-            <h2>Security Analyst @ Appian</h2>
-            <p>I am a Cybersecurity Engineering graduate from George Mason University with a diverse background in security operations, threat detection, and incident response across enterprise environments. Currently, I serve as an Information Security Analyst at Appian, focusing on security orchestration, automation, and response (SOAR) technologies alongside insider threat monitoring. My experience includes developing high-fidelity detection queries and automated workflows at companies like Tesla, managing vulnerabilities, and building robust log analysis pipelines. Armed with CompTIA Security+ and ISC2 CC certifications, I am dedicated to deploying robust, automated security architectures that defend the enterprise perimeter.</p>
+            <div class="profile-img-container">
+                <img src="assets/profile.png" alt="Phillip Nguyen" class="profile-img">
+            </div>
+            <div>
+                <h1>Phillip Nguyen</h1>
+                <h2>Security Analyst @ Appian</h2>
+            </div>
         </section>
 
         <section id="education">
