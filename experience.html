@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phillip Nguyen | Experience</title>
+    <style>
+        :root {
+            --bg-dark: #0a192f;
+            --bg-light: #112240;
+            --accent: #64ffda;
+            --text-main: #e6f1ff;
+            --text-dim: #8892b0;
+            --border: #233554;
+        }
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        nav {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 1.5rem 4rem;
+            border-bottom: 1px solid var(--border);
+            background: rgba(10, 25, 47, 0.85);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-links a { color: var(--text-main); text-decoration: none; margin-right: 2rem; font-size: 0.9rem; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--accent); }
+        .nav-links a.active { color: var(--accent); }
+
+        main { max-width: 900px; margin: 4rem auto; padding: 0 2rem; }
+        section { margin-bottom: 5rem; }
+
+        .section-header { display: flex; align-items: center; margin-bottom: 3rem; }
+        .section-header h2 { font-size: 1.8rem; margin-right: 1rem; color: #ccd6f6; }
+        .section-header .line { height: 1px; flex-grow: 1; background: var(--border); }
+
+        .timeline {
+            position: relative;
+            border-left: 2px solid var(--border);
+            padding-left: 2.5rem;
+            margin-left: 0.5rem;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 4rem;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: calc(-2.5rem - 6px - 1px);
+            top: 6px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--bg-dark);
+            border: 2px solid var(--accent);
+            transition: all 0.2s ease-in-out;
+            box-shadow: 0 0 0px var(--accent);
+        }
+
+        .timeline-item:hover .timeline-marker {
+            background: var(--accent);
+            box-shadow: 0 0 8px var(--accent);
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .job-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #ccd6f6;
+            margin: 0;
+        }
+
+        .job-title span {
+            color: var(--accent);
+        }
+
+        .job-meta {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            margin: 0 0 1rem 0;
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .job-desc {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .job-desc li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .job-desc li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        .skills-container {
+            margin-top: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            color: var(--accent);
+            padding: 0.25rem 0.6rem;
+            font-size: 0.75rem;
+            border-radius: 3px;
+        }
+
+        .footer-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 5rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .btn {
+            display: inline-block;
+            color: var(--accent);
+            background: transparent;
+            border: 1px solid var(--accent);
+            padding: 0.75rem 1.5rem;
+            font-size: 0.9rem;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: rgba(100, 255, 218, 0.1);
+        }
+
+        .back-link {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: var(--accent);
+        }
+
+        footer { text-align: center; padding: 4rem; color: var(--text-dim); font-size: 0.8rem; border-top: 1px solid var(--border); }
+
+        @media (max-width: 768px) {
+            nav { padding: 1.5rem 2rem; }
+            .job-header { flex-direction: column; }
+            .job-meta { flex-direction: column; }
+            .job-meta span { margin-bottom: 0.2rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-links">
+            <a href="index.html#me">01. Me</a>
+            <a href="experience.html" class="active">02. Experience</a>
+            <a href="index.html#projects">03. Projects</a>
+        </div>
+    </nav>
+
+    <main>
+        <section>
+            <div class="section-header">
+                <h2>02. Professional Experience</h2>
+                <div class="line"></div>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="job-header">
+                        <h3 class="job-title">Information Security Analyst <span>@ Appian</span></h3>
+                        <div class="job-meta">
+                            <span>McLean, VA</span>
+                            <span>July 2025 – Present</span>
+                        </div>
+                    </div>
+                    <ul class="job-desc">
+                        <li>Participating in on-call shift rotations for the Security, Orchestration, Automation, and Response (SOAR) tool, providing 24/7 coverage spanning from low to critical alerts maintaining 100% compliance with response time requirement</li>
+                        <li>Leveraging Generative AI to rapidly prototype and deploy 15+ custom Python and SQL detections within the in-house SOAR</li>
+                        <li>Handling 10+ insider threat cases, performing laptop forensic and close user monitoring, to identify and prevent data spills</li>
+                        <li>Spearheaded the development of a Snowflake-based Insider Threat dashboard from 0 to 1, cutting execution and reporting time by 83% while implementing an automated document export to translate findings for cross-departmental stakeholders</li>
+                        <li>Accelerating the Q3 launch of a new in-house SOAR by deploying AI subagents to migrate, translate, and optimize diverse threat detections (CrowdStrike LogScale, AWS Athena, Python) into Snowflake SQL within a single quarter</li>
+                    </ul>
+                    <div class="skills-container">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">SOAR</span>
+                        <span class="skill-tag">Snowflake</span>
+                        <span class="skill-tag">Forensics</span>
+                        <span class="skill-tag">Generative AI</span>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="job-header">
+                        <h3 class="job-title">InfoSec Security Operations Intern <span>@ Tesla</span></h3>
+                        <div class="job-meta">
+                            <span>Fremont, CA</span>
+                            <span>January 2025 – April 2025</span>
+                        </div>
+                    </div>
+                    <ul class="job-desc">
+                        <li>Developed detection queries that improved threat detection accuracy by 19% and reduced false positives by 96%</li>
+                        <li>Automated the domain takedown process to eliminate websites impersonating the company, cutting response time by 98%</li>
+                        <li>Triaged 30+ alerts weekly including phishing, scams, and medium alerts maintaining 100% of the company’s SLAs</li>
+                        <li>Led end-to-end incident lifecycle management for 5+ weekly vendor phishing alerts, coordinating with internal teams and external suppliers to ensure threat remediation while verifying unauthorized access to company data</li>
+                    </ul>
+                    <div class="skills-container">
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">Threat Detection</span>
+                        <span class="skill-tag">Domain Takedowns</span>
+                        <span class="skill-tag">Incident Response</span>
+                        <span class="skill-tag">SLA Management</span>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="job-header">
+                        <h3 class="job-title">Cybersecurity Intern <span>@ BankFund Credit Union</span></h3>
+                        <div class="job-meta">
+                            <span>Washington, D.C.</span>
+                            <span>September 2024 – November 2024</span>
+                        </div>
+                    </div>
+                    <ul class="job-desc">
+                        <li>Patched over 1200 endpoints to maintain security compliance, achieving 90% of the company’s SLAs</li>
+                        <li>Created newsletters for 300 employees during Cybersecurity Awareness Month to educate them on online security safety</li>
+                        <li>Leveraged Rapid7 InsightVM to reduce assets with critical vulnerabilities by 81% (79 to 15) in 30 days</li>
+                        <li>Reduced unnecessary software packages in the patch management bundle from 100 to 60, improving asset scan times</li>
+                    </ul>
+                    <div class="skills-container">
+                        <span class="skill-tag">Rapid7 InsightVM</span>
+                        <span class="skill-tag">Patch Management</span>
+                        <span class="skill-tag">Endpoint Security</span>
+                        <span class="skill-tag">Security Awareness</span>
+                        <span class="skill-tag">Compliance</span>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="job-header">
+                        <h3 class="job-title">IT Security Intern <span>@ CNA Corporation</span></h3>
+                        <div class="job-meta">
+                            <span>Arlington, VA</span>
+                            <span>May 2024 – August 2024</span>
+                        </div>
+                    </div>
+                    <ul class="job-desc">
+                        <li>Created over 15 company articles, including standard operating procedures (SOP), knowledge-based articles (KB), and incident response plans (IRP), earning two quarterly awards for the highest content output among 30+ employees</li>
+                        <li>Created an automated process to reconcile a spreadsheet with a baseline reducing time spent by 80% surpassing SLAs</li>
+                        <li>Analyzed 1000+ SIEM logs to identify malicious applications and monitor network activity, enhancing security measures</li>
+                        <li>Monitored and examined high volumes of email traffic (200+ daily alerts) leveraging Data Loss Prevention (DLP) solutions to mitigate insider threats, malicious communications, and the unauthorized exfiltration of sensitive corporate data</li>
+                    </ul>
+                    <div class="skills-container">
+                        <span class="skill-tag">SIEM Log Analysis</span>
+                        <span class="skill-tag">Data Loss Prevention (DLP)</span>
+                        <span class="skill-tag">SOP / IRP Writing</span>
+                        <span class="skill-tag">Process Automation</span>
+                        <span class="skill-tag">Email Analysis</span>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="job-header">
+                        <h3 class="job-title">Cybersecurity Research Intern <span>@ CoVA CCI</span></h3>
+                        <div class="job-meta">
+                            <span>Remote</span>
+                            <span>January 2024 – April 2024</span>
+                        </div>
+                    </div>
+                    <ul class="job-desc">
+                        <li>Placed top 4 out of 40+ members for developing an email phishing detection system, increasing detection accuracy by 35%</li>
+                    </ul>
+                    <div class="skills-container">
+                        <span class="skill-tag">Phishing Detection</span>
+                        <span class="skill-tag">Security Research</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Machine Learning / Rules</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-nav">
+                <a href="index.html" class="back-link">&larr; Back to Home</a>
+                <a href="Phillip Nguyen - Resume.pdf" class="btn" target="_blank">Download Resume PDF</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        Built & Secured by Phillip Nguyen &copy; 2026
+    </footer>
+</body>
+</html>

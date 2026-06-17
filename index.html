@@ -66,6 +66,20 @@
         .tag-list { display: flex; flex-wrap: wrap; margin-top: 1.5rem; }
         .tag { color: var(--accent); font-size: 0.75rem; margin-right: 1rem; }
 
+        .view-more-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: bold;
+            transition: gap 0.2s;
+        }
+        .view-more-link:hover {
+            gap: 0.8rem;
+        }
+
         footer { text-align: center; padding: 4rem; color: var(--text-dim); font-size: 0.8rem; border-top: 1px solid var(--border); }
         
         @media (max-width: 768px) {
@@ -80,7 +94,7 @@
     <nav>
         <div class="nav-links">
             <a href="#me">01. Me</a>
-            <a href="#experience">02. Experience</a>
+            <a href="experience.html">02. Experience</a>
             <a href="#projects">03. Projects</a>
         </div>
     </nav>
@@ -99,25 +113,31 @@
             </div>
             <div class="grid">
                 <div class="card">
-                    <h4>Enterprise Defense Corp</h4>
-                    <h3>Senior Detection Engineer</h3>
-                    <p>Designed and deployed automated threat detection pipelines. Built custom SIEM integrations reducing alert fatigue by 45%.</p>
+                    <h4>Appian</h4>
+                    <h3>Information Security Analyst</h3>
+                    <p>Participating in 24/7 SOAR coverage, deploying 15+ custom Python and SQL detections, and spearheading a Snowflake-based Insider Threat dashboard.</p>
                     <div class="tag-list">
-                        <span class="tag">Splunk</span>
                         <span class="tag">Python</span>
-                        <span class="tag">Sigma</span>
+                        <span class="tag">SQL</span>
+                        <span class="tag">SOAR</span>
+                        <span class="tag">Snowflake</span>
                     </div>
                 </div>
                 <div class="card">
-                    <h4>Cyber Incident Response LLC</h4>
-                    <h3>Security Analyst</h3>
-                    <p>Conducted host and network-level forensics during active intrusion investigations. Authored playbooks for threat containment.</p>
+                    <h4>Tesla</h4>
+                    <h3>InfoSec Security Operations Intern</h3>
+                    <p>Improved threat detection accuracy by 19%, automated domain takedown to eliminate impersonator sites, and triaged 30+ weekly alerts.</p>
                     <div class="tag-list">
-                        <span class="tag">Wireshark</span>
-                        <span class="tag">ELK Stack</span>
-                        <span class="tag">Forensics</span>
+                        <span class="tag">SQL</span>
+                        <span class="tag">Threat Detection</span>
+                        <span class="tag">Incident Response</span>
                     </div>
                 </div>
+            </div>
+            <div style="margin-top: 2.5rem; text-align: left;">
+                <a href="experience.html" class="view-more-link">
+                    View Detailed Career Timeline &rarr;
+                </a>
             </div>
         </section>
 
