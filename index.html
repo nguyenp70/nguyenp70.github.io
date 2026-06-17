@@ -44,7 +44,29 @@
         
         section { margin-bottom: 6rem; }
         .hero { display: flex; align-items: center; gap: 3rem; margin-bottom: 6rem; flex-wrap: wrap; }
-        .profile-img-container { flex-shrink: 0; }
+        .profile-img-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-shrink: 0;
+        }
+        .social-icon-link {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 1rem;
+            color: var(--accent);
+            text-decoration: none;
+            transition: transform 0.2s ease, filter 0.2s ease;
+        }
+        .social-icon-link:hover {
+            transform: translateY(-3px);
+            filter: drop-shadow(0 0 6px var(--accent));
+        }
+        .social-icon {
+            width: 24px;
+            height: 24px;
+        }
         .profile-img {
             width: 180px;
             height: 180px;
@@ -122,6 +144,13 @@
         <section class="hero" id="me">
             <div class="profile-img-container">
                 <img src="assets/profile.png" alt="Phillip Nguyen" class="profile-img">
+                <a href="https://www.linkedin.com/in/pnguyen70/" target="_blank" class="social-icon-link" aria-label="LinkedIn Profile">
+                    <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                        <rect x="2" y="9" width="4" height="12"></rect>
+                        <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                </a>
             </div>
             <div>
                 <h1>Phillip Nguyen</h1>
