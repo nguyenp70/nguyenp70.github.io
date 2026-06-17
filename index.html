@@ -24,7 +24,7 @@
         }
         nav {
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-start;
             align-items: center;
             padding: 1.5rem 4rem;
             border-bottom: 1px solid var(--border);
@@ -34,14 +34,12 @@
             top: 0;
             z-index: 100;
         }
-        .logo { color: var(--accent); font-weight: bold; font-size: 1.2rem; }
-        .nav-links a { color: var(--text-main); text-decoration: none; margin-left: 2rem; font-size: 0.9rem; transition: color 0.2s; }
+        .nav-links a { color: var(--text-main); text-decoration: none; margin-right: 2rem; font-size: 0.9rem; transition: color 0.2s; }
         .nav-links a:hover { color: var(--accent); }
 
         main { max-width: 1000px; margin: 4rem auto; padding: 0 2rem; }
         
-        .hero { margin-bottom: 6rem; }
-        .hero h3 { color: var(--accent); font-size: 1rem; margin-bottom: 1rem; }
+        section { margin-bottom: 6rem; }
         .hero h1 { font-size: 4rem; margin: 0; color: #ccd6f6; }
         .hero h2 { font-size: 3.5rem; margin: 0; color: var(--text-dim); line-height: 1.1; }
         .hero p { max-width: 540px; color: var(--text-dim); margin-top: 2rem; font-size: 1.1rem; line-height: 1.6; }
@@ -80,25 +78,52 @@
 </head>
 <body>
     <nav>
-        <div class="logo"></div>
         <div class="nav-links">
-            <a href="#about">01.About</a>
-            <a href="#experience">02.Experience</a>
-            <a href="#work">03.Work</a>
-            <a href="#contact">04.Contact</a>
+            <a href="#me">01. Me</a>
+            <a href="#experience">02. Experience</a>
+            <a href="#projects">03. Projects</a>
         </div>
     </nav>
 
     <main>
-        <section class="hero" id="about">
+        <section class="hero" id="me">
             <h1>Phillip Nguyen</h1>
             <h2>I secure the digital perimeter.</h2>
             <p>I’m a cybersecurity engineer specializing in detection engineering, threat hunting, and high-fidelity automation for enterprise defense.</p>
         </section>
 
-        <section id="work">
+        <section id="experience">
             <div class="section-header">
-                <h2>Featured Deployments</h2>
+                <h2>02. Experience</h2>
+                <div class="line"></div>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h4>Enterprise Defense Corp</h4>
+                    <h3>Senior Detection Engineer</h3>
+                    <p>Designed and deployed automated threat detection pipelines. Built custom SIEM integrations reducing alert fatigue by 45%.</p>
+                    <div class="tag-list">
+                        <span class="tag">Splunk</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">Sigma</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h4>Cyber Incident Response LLC</h4>
+                    <h3>Security Analyst</h3>
+                    <p>Conducted host and network-level forensics during active intrusion investigations. Authored playbooks for threat containment.</p>
+                    <div class="tag-list">
+                        <span class="tag">Wireshark</span>
+                        <span class="tag">ELK Stack</span>
+                        <span class="tag">Forensics</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="section-header">
+                <h2>03. Projects</h2>
                 <div class="line"></div>
             </div>
             <div class="grid">
