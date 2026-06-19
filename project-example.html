@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +14,7 @@
             --text-dim: #8892b0;
             --border: #233554;
         }
+
         body {
             background-color: var(--bg-dark);
             color: var(--text-main);
@@ -22,6 +24,7 @@
             flex-direction: column;
             min-height: 100vh;
         }
+
         nav {
             display: flex;
             justify-content: flex-start;
@@ -34,11 +37,28 @@
             top: 0;
             z-index: 100;
         }
-        .nav-links a { color: var(--text-main); text-decoration: none; margin-right: 2rem; font-size: 0.9rem; transition: color 0.2s; }
-        .nav-links a:hover { color: var(--accent); }
 
-        main { max-width: 800px; margin: 4rem auto; padding: 0 2rem; flex: 1; width: 100%; box-sizing: border-box; }
-        
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin-right: 2rem;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        main {
+            max-width: 800px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            flex: 1;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
         h1 {
             color: #ccd6f6;
             font-size: 2.5rem;
@@ -57,13 +77,19 @@
             margin-bottom: 1.5rem;
         }
 
-        .tag-list { 
-            display: flex; 
-            flex-wrap: wrap; 
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
             padding-top: 2rem;
             border-top: 1px solid var(--border);
         }
-        .tag { color: var(--accent); font-size: 0.85rem; margin-right: 1rem; margin-bottom: 0.5rem; }
+
+        .tag {
+            color: var(--accent);
+            font-size: 0.85rem;
+            margin-right: 1rem;
+            margin-bottom: 0.5rem;
+        }
 
         .footer-nav {
             margin-top: 3rem;
@@ -82,14 +108,27 @@
             color: var(--accent);
         }
 
-        footer { text-align: center; padding: 4rem; color: var(--text-dim); font-size: 0.8rem; border-top: 1px solid var(--border); margin-top: auto; }
-        
+        footer {
+            text-align: center;
+            padding: 4rem;
+            color: var(--text-dim);
+            font-size: 0.8rem;
+            border-top: 1px solid var(--border);
+            margin-top: auto;
+        }
+
         @media (max-width: 768px) {
-            nav { padding: 1.5rem 2rem; }
-            h1 { font-size: 2rem; }
+            nav {
+                padding: 1.5rem 2rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
+
 <body>
     <nav>
         <div class="nav-links">
@@ -103,17 +142,26 @@
     <main>
         <section>
             <h1>Placeholder Project</h1>
-            
-            <div style="color: var(--text-dim); font-size: 0.95rem; margin-top: -1.5rem; margin-bottom: 2rem; display: flex; align-items: center; gap: 0.5rem; font-family: monospace;">
+
+            <div
+                style="color: var(--text-dim); font-size: 0.95rem; margin-top: -1.5rem; margin-bottom: 2rem; display: flex; align-items: center; gap: 0.5rem; font-family: monospace;">
                 <span>Published: 01/20/2025</span>
             </div>
-            
+
             <div class="content">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nec enim mauris. Cras pretium elementum ante, eu malesuada nunc auctor scelerisque. Fusce pulvinar lectus ut mi aliquet, id lobortis ante convallis. Nulla facilisi. Praesent sit amet mauris eu nisl luctus aliquet a sit amet lectus.</p>
-                
-                <p>Phasellus gravida libero sit amet mauris suscipit, at vehicula mi hendrerit. Duis vitae erat ac eros lacinia accumsan vel a purus. Sed eu tellus eget sem vestibulum dignissim. Aenean non tortor ut est scelerisque commodo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.</p>
-                
-                <p>Curabitur sodales diam quis ipsum ultrices, vitae sollicitudin turpis volutpat. Integer quis varius tellus. Ut efficitur massa nec interdum pulvinar. Mauris tincidunt sem in tellus euismod, a pharetra magna tincidunt. Nullam imperdiet turpis a nisl tincidunt viverra.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nec enim mauris. Cras pretium
+                    elementum ante, eu malesuada nunc auctor scelerisque. Fusce pulvinar lectus ut mi aliquet, id
+                    lobortis ante convallis. Nulla facilisi. Praesent sit amet mauris eu nisl luctus aliquet a sit amet
+                    lectus.</p>
+
+                <p>Phasellus gravida libero sit amet mauris suscipit, at vehicula mi hendrerit. Duis vitae erat ac eros
+                    lacinia accumsan vel a purus. Sed eu tellus eget sem vestibulum dignissim. Aenean non tortor ut est
+                    scelerisque commodo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere
+                    cubilia curae.</p>
+
+                <p>Curabitur sodales diam quis ipsum ultrices, vitae sollicitudin turpis volutpat. Integer quis varius
+                    tellus. Ut efficitur massa nec interdum pulvinar. Mauris tincidunt sem in tellus euismod, a pharetra
+                    magna tincidunt. Nullam imperdiet turpis a nisl tincidunt viverra.</p>
             </div>
 
             <div class="tag-list">
@@ -121,7 +169,7 @@
                 <span class="tag">Kubernetes</span>
                 <span class="tag">Docker</span>
             </div>
-            
+
             <div class="footer-nav">
                 <a href="projects.html" class="back-link">&larr; Back to Personal Work</a>
             </div>
@@ -132,4 +180,5 @@
         Built & Secured by Phillip Nguyen &copy; 2026
     </footer>
 </body>
+
 </html>
