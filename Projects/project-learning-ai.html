@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phillip Nguyen | Harnessing AI</title>
+    <style>
+        :root {
+            --bg-dark: #0a192f;
+            --bg-light: #112240;
+            --accent: #64ffda;
+            --text-main: #e6f1ff;
+            --text-dim: #8892b0;
+            --border: #233554;
+        }
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        nav {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 1.5rem 4rem;
+            border-bottom: 1px solid var(--border);
+            background: rgba(10, 25, 47, 0.85);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-links a { color: var(--text-main); text-decoration: none; margin-right: 2rem; font-size: 0.9rem; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--accent); }
+
+        main { max-width: 800px; margin: 4rem auto; padding: 0 2rem; flex: 1; width: 100%; box-sizing: border-box; }
+        
+        h1 {
+            color: #ccd6f6;
+            font-size: 2.5rem;
+            margin-top: 0;
+            margin-bottom: 2rem;
+        }
+
+        .content {
+            color: var(--text-main);
+            line-height: 1.7;
+            font-size: 1.05rem;
+            margin-bottom: 4rem;
+        }
+
+        .content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .tag-list { 
+            display: flex; 
+            flex-wrap: wrap; 
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+        .tag { color: var(--accent); font-size: 0.85rem; margin-right: 1rem; margin-bottom: 0.5rem; }
+
+        .footer-nav {
+            margin-top: 3rem;
+        }
+
+        .back-link {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .back-link:hover {
+            color: var(--accent);
+        }
+
+        footer { text-align: center; padding: 4rem; color: var(--text-dim); font-size: 0.8rem; border-top: 1px solid var(--border); margin-top: auto; }
+        
+        @media (max-width: 768px) {
+            nav { padding: 1.5rem 2rem; }
+            h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-links">
+            <a href="index.html#me">01. Me</a>
+            <a href="index.html#education">02. Education</a>
+            <a href="experience.html">03. Experience</a>
+            <a href="projects.html">04. Personal Work</a>
+        </div>
+    </nav>
+
+    <main>
+        <section>
+            <h1>Harnessing AI</h1>
+            
+            <div style="color: var(--accent); font-size: 1rem; margin-bottom: 3rem; font-family: monospace;">
+                <span>Published: 06/19/2026</span>
+            </div>
+            
+            <div class="content">
+                <p>I still remember my first time using ChatGPT during my junior year of university. I had asked the model to “find me the top 10 highest-rated restaurants in Virginia.” Within seconds, I was handed a comprehensive list complete with addresses, cuisines, and ratings. My immediate thought was, <i>Holy shit</i>.</p>
+
+                <p>That was just three years ago. Since then, the landscape has exploded as more companies have released their flagship large language models: Google’s Gemini, Anthropic’s Claude, xAI’s Grok, and OpenAI’s ChatGPT.</p>
+
+                <p>As artificial intelligence becomes more deeply integrated into our daily lives, the need to truly harness its power grows. But here’s the catch: an AI's efficiency is only as competent as its driver. We’ve come a long way from simply asking for restaurant recommendations.</p>
+
+                <h2>AI Requires Intention</h2>
+
+                <p>Recently, we received access to Claude at work. I initially used it to migrate and generate security detections, and the model was astoundingly efficient, cutting my workflow by roughly 40%. While 40% might not sound crazy to some, it was my first time using a coding model in a professional setting. Shaving 24 minutes off an hour-long task left me amazed.</p>
+
+                <p>Naturally curious, I went home, got myself Gemini Pro, and started experimenting. My first project was a personal financial tracker. Originally a python application, I refactor it into a full web application built with FastAPI and SQLite. At first, everything worked perfectly. But as I layered on more features, the frontend began to unravel: buttons disappeared, graphs displayed skewed data, and at one point, a page reload resulted in a completely blank screen.</p>
+
+                <p>Frustrated, I vented to my manager the next day. His response completely shifted my perspective: <i>"You need to understand that AI can only do what you explicitly tell it to do. It doesn’t know what you want; it only knows what you prompt."</i></p>
+
+                <p>Take a simple feature, like a box displaying total expenditures across all my credit cards. To a human developer, the end goal is intuitive because we can easily picture what we want to. To an AI, it’s a minefield of ambiguities. Do you want to include all cards or just active ones? Should the total be a positive or negative number? What color should the text be? How often should the API key refresh to pull bank data? Where is this data being stored?</p>
+
+                <p>When you fail to provide strict boundaries, the AI starts making its own assumptions to fill in the gaps. I learned that slow and steady really does win the race. I began breaking tasks down into microscopic steps: <i>"Create the container for the total expenditure number, then wait for my next prompt." "Place the container in the top left of the Spendings tab, then wait." "Sum up the charges for the cards ending in XXXX and YYYY, but do not include pending charges. Repeat these instructions back to me."</i> Who knew that failing to state the trivial was exactly what held the AI back from its full potential?</p>
+
+                <h2>Building the Context Window</h2>
+
+                <p>Armed with this new mindset of giving exact, step-by-step instructions, I jumped right back to the CLI at work, ready to build out SQL detections for various logs. I figured I was about to double my output.</p>
+
+                <p>I was wrong. It turns out, prompting "Create CrowdStrike detections" is nowhere near enough. I actually spent more time troubleshooting why the AI was generating ineffective alerts than I would have spent just writing them myself.</p>
+
+                <p>I quickly realized that an LLM is essentially a brilliant new hire. You can tell a new hire to write a detection, but if they have no lay of the land, they will fail. What specific endpoints are we targeting? What is the exact schema of our CrowdStrike logs? How frequently is this detection running?</p>
+
+                <p>Before starting any project, you have to build the context window. Whether you are using steering files to guide the model or subagents to delegate tasks, the AI needs that baseline knowledge. Now, if I want an agent to write detections, I start by setting the stage: <i>"You are a senior security analyst. Your goal is to write high-fidelity detections that minimize noise in our SOAR platform. Reference the 'crowdstrike.csv' schema for available columns, and stage your changes in this specific Git branch."</i></p>
+
+                <p>Taking 15 or 20 minutes to explicitly define the project's context might feel slow, but it saves hours of frustrating troubleshooting later. Preventing the AI from guessing is a distinct skill, and it is one I’m still trying to hone.</p>
+
+                <h2>The Road Ahead</h2>
+
+                <p>Learning to leverage AI requires a completely new set of skills, running parallel to the already rapidly evolving world of cybersecurity. It helps to remember that AI is an amplifier, not an autopilot. It is not a silver bullet that can independently solve complex engineering problems from scratch; rather, it is a highly capable assistant that relies entirely on your direction, logic, and oversight. Knowing how to use AI is one thing. Knowing how to drive it effectively is the true competitive advantage.</p>
+            </div>
+
+            <div class="tag-list">
+                <span class="tag">Gemini</span>
+                <span class="tag">Claude</span>
+                <span class="tag">Prompt Engineering</span>
+            </div>
+            
+            <div class="footer-nav">
+                <a href="projects.html" class="back-link">&larr; Back to Personal Work</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        Built & Secured by Phillip Nguyen &copy; 2026
+    </footer>
+</body>
+</html>
