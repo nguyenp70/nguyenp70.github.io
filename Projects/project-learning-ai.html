@@ -127,17 +127,19 @@
 
                 <p>When you fail to provide strict boundaries, the AI starts making its own assumptions to fill in the gaps. I learned that slow and steady really does win the race. I began breaking tasks down into microscopic steps: <i>"Create the container for the total expenditure number, then wait for my next prompt." "Place the container in the top left of the Spendings tab, then wait." "Sum up the charges for the cards ending in XXXX and YYYY, but do not include pending charges. Repeat these instructions back to me."</i> Who knew that failing to state the trivial was exactly what held the AI back from its full potential?</p>
 
-                <h2>Building the Context Window</h2>
+                <h2>Defining the Workspace</h2>
 
-                <p>Armed with this new mindset of giving exact, step-by-step instructions, I jumped right back to the CLI at work, ready to build out SQL detections for various logs. I figured I was about to double my output.</p>
+                <p>Armed with this new mindset of giving exact, step-by-step instructions, I jumped right back to the CLI at work, ready to build out SQL detections for various logs. I figured that as long as I told the AI exactly what to build, I would double my output.</p>
 
-                <p>I was wrong. It turns out, prompting "Create CrowdStrike detections" is nowhere near enough. I actually spent more time troubleshooting why the AI was generating ineffective alerts than I would have spent just writing them myself.</p>
+                <p>I was wrong again. It turns out, giving great instructions is useless if the AI doesn't know where it lives.</p>
 
-                <p>I quickly realized that an LLM is essentially a brilliant new hire. You can tell a new hire to write a detection, but if they have no lay of the land, they will fail. What specific endpoints are we targeting? What is the exact schema of our CrowdStrike logs? How frequently is this detection running?</p>
+                <p>I spent more time troubleshooting ineffective alerts than I would have spent writing them myself. I quickly realized that an LLM is essentially a brilliant new hire. You can give a new hire a perfect, step-by-step checklist to write a detection, but if they have no lay of the land, they will fail. What specific endpoints are we targeting? What is the exact schema of our CrowdStrike logs? How frequently is this detection running?</p>
 
-                <p>Before starting any project, you have to build the context window. Whether you are using steering files to guide the model or subagents to delegate tasks, the AI needs that baseline knowledge. Now, if I want an agent to write detections, I start by setting the stage: <i>"You are a senior security analyst. Your goal is to write high-fidelity detections that minimize noise in our SOAR platform. Reference the 'crowdstrike.csv' schema for available columns, and stage your changes in this specific Git branch."</i></p>
+                <p>Step-by-step intention isn't enough. Before starting any project, you have to build the context window. Whether you are using steering files to guide the model or subagents to delegate tasks, the AI needs that baseline knowledge. Now, if I want an agent to write detections, I start by setting the stage: <i>"You are a senior security analyst. Your goal is to write high-fidelity detections that minimize noise in our SOAR platform. Reference the 'crowdstrike.csv' schema for available columns, and stage your changes in this specific Git branch."</i></p>
 
-                <p>Taking 15 or 20 minutes to explicitly define the project's context might feel slow, but it saves hours of frustrating troubleshooting later. Preventing the AI from guessing is a distinct skill, and it is one I’m still trying to hone.</p>
+                <p>Structuring your environment this way also opens the door to using subagents which is a massive advantage for saving on unnecessary token usage. Instead of forcing one heavy model to do everything, you can delegate tasks based on complexity. For example, if I want to build out a new detection, I don't need a massive, expensive model just to read the data structure. I will use Claude Haiku to parse the logging schema, pass that context off to Sonnet to build me a detection plan, and finally bring in Opus purely to execute the complex code.</p>
+
+                <p>Taking 15 or 20 minutes to explicitly define the project's context and assign the right subagents might feel slow, but it saves hours of frustrating troubleshooting and compute resources.</p>
 
                 <h2>The Road Ahead</h2>
 
