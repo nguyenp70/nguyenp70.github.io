@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phillip Nguyen | AI Triaging</title>
+    <title>Phillip Nguyen | AI Triaging (v1)</title>
     <style>
         :root {
             --bg-dark: #0a192f;
@@ -145,7 +145,7 @@
 
     <main>
         <section>
-            <h1>AI Triaging</h1>
+            <h1>AI Triaging (v1)</h1>
 
             <div
                 style="color: var(--text-dim); font-size: 0.95rem; margin-top: -1.5rem; margin-bottom: 2rem; display: flex; align-items: center; gap: 0.5rem; font-family: monospace;">
@@ -153,7 +153,18 @@
             </div>
 
             <div class="content">
-                <h2>Under Construction</h2>
+                <h2>Overview</h2>
+                <p>While implementing this level of AI automation in an enterprise SOC is a multi-quarter effort, I decided to engineer a localized SOAR environment at home to demonstrate this concept in action. In this project, I utilized an isolated Windows virtual machine to simulate my "enterprise" endpoint. To capture system-level telemetry such as process creations and encoded command-line executions, I configured Sysmon as my primary endpoint sensor. Winlogbeat acted as the log shipper to forward telemetry across a virtual net.work into a locally hosted Elastic Stack SIEM running inside Docker on Windows Subsystem for Linux (WSL). Kibana served as my primary dashboard to visualize the data stored in Elasticsearch. Finally, to act as the automated Tier 1 analyst, I integrated a custom Python script that pulled JSON logs and fed them into a local Large Language Model (LLM). This AI agent autonomously evaluates the telemetry, applies behavioral context, and triages the alerts, completing the end-to-end pipeline of an AI-driven SOC.</p>
+                <div style="margin: 3rem 0; text-align: center;">
+                    <img src="/assets/high%20level%20overview.png" alt="AI Triaging High Level Overview" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid var(--border);">
+                </div>
+                <h2>Technical Implementation</h2>
+                <p>The foundation of this project required building a secure, isolated environment that mimics an enterprise network. I started by provisioning a Windows Evaluation Virtual Machine to act as my corporate endpoint. To ensure malicious activity would not bleed into my actual home network, I placed the VM on a host-only network adapter, air-gapped from the internet, while maintaining a dedicated communication line to my primary machine.</p>
+                <p>With the endpoint isolated, I needed a sensor capable of capturing system-level telemetry that default Windows logging misses. So, I deployed Microsoft Sysinternals' Sysmon, utilizing SwiftOnSecurity’s configuration file. This allowed me to capture highly granular data such as specific process creations, encoded command-line executions, and network connections.</p>
+                <p>Next, I engineered the destination for this telemetry: the SIEM. Rather than relying on cloud infrastructure, I built the pipeline locally. Leveraging Windows Subsystem for Linux (WSL), I spun up Elasticsearch and Kibana using Docker Compose. Standing up an enterprise-grade database locally came with its own set of infrastructure challenges. For instance, I had to manually modify the Linux virtual memory mapping (max_map_count) within the WSL kernel to prevent the Elasticsearch container from immediately crashing under the heavy memory load.</p>
+                <p>The final hurdle was bridging the gap between the isolated Windows endpoint and the SIEM. I installed Winlogbeat as a background service on the VM to act as my log shipper. Because the SIEM was running inside WSL, essentially a hidden VM within my host machine, logs sent from the Windows endpoint were hitting a routing wall at the host OS. To bypass this nested virtualization issue, I configured a Windows Port Proxy on the host machine. In turn, this created a persistent tunnel that intercepted incoming log traffic on port 9200 and forwarded it directly into the WSL environment. Once the firewall rules were adjusted and the Winlogbeat YAML configuration was strictly formatted, the pipeline came online, successfully streaming Sysmon telemetry directly into my Kibana dashboard in real time.</p>
+                <p>With the telemetry pipeline fully operational, I moved to automate the Tier 1 triage process by integrating a local AI engine. I deployed Ollama on my host machine to serve the llama3:latest model, configuring a WSL network bridge to allow secure API communication. To connect the SIEM to the LLM, I engineered a custom Python orchestration script. This script utilizes Elastic Query DSL to actively hunt for unanalyzed Sysmon process creation logs, intentionally throttling the batch size to protect local compute resources.</p>
+                <p>Because raw SIEM JSON is too noisy for an LLM to evaluate accurately, I wrote a data parser to extract high-value Indicators of Compromise (IOCs), specifically the executing process, parent process, command line, and user. The script injects this context into a strict prompt, forcing the AI to output a JSON-formatted severity score and analysis verdict. While the pipeline successfully pulled and analyzed background processes, it immediately highlighted a classic detection engineering hurdle: the false positive trap. The AI flagged benign executions like smartscreen.exe as suspicious because it lacked environmental baseline context. To solve this, my next phase of development will completely decouple this monolithic script into a modular architecture, utilizing a SQLite database for state management and alert suppression, wrapped in a FastAPI backend and a Streamlit dashboard for analyst review.</p>
             </div>
 
             <div class="tag-list">
